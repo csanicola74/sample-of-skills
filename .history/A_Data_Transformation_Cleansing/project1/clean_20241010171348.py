@@ -82,41 +82,7 @@ Provider Name      0
 # remove rows with missing data
 # df.dropna(inplace=True)
 # if you want to remove rows with missing data in only a specific column:
-# this is the best option because there isn't a patient associated with the claim
-df.dropna(subset=['Claim ID'], inplace=True)
+# this is better for healthcare where they can be duplicate infomration for everything other than the patient
+df.dropna(subset=['column_name'], inplace=True)
 # see the new shape of the dataframe
 print(df.shape)
-# Sample Output: (165, 13)
-# Step 3: Removing Duplicates
-# 1. Identify Duplicates
-duplicates = df[df.duplicated(subset='Claim ID')]
-print(duplicates)
-'''
-Sample Output:
-    Claim ID Patient ID   Age Gender  ... Payment Date Insurance Plan  Claim Status        Provider Name
-56     C1030      P5742  47.0      f  ...   06/12/2023            PPO          Paid      Wellness Clinic
-85     C1003      P1082  55.0    NaN  ...   02/22/2024       Medicare          Paid      Wellness Clinic
-88     C1052      P2601  53.0    NaN  ...          NaN            PPO          Paid  Green Valley Clinic
-97     C1141      P1050   NaN    NaN  ...   2023-03-15            PPO          Paid  Green Valley Clinic
-107    C1090      P9713   NaN      M  ...   14-06-2024       Medicaid          Paid   East Valley Clinic
-108    C1095      P2646  76.0      M  ...   2024-04-28       Medicare       Pending     Blue Sky Medical
-118    C1113      P8287  79.0    NaN  ...   2023-05-02       Medicaid          Paid    Westside Hospital
-122    C1084      P3161   NaN    NaN  ...   01/27/2024       Medicaid       Pending  Green Valley Clinic
-129    C1060      P6967   NaN    NaN  ...   02/11/2024            NaN          Paid     Southside Clinic
-131    C1075      P3588   NaN    NaN  ...   2023-06-07            NaN          Paid      Wellness Clinic
-136    C1086      P8040  53.0      M  ...          NaN            HMO          Paid      Wellness Clinic
-137    C1061      P7349  21.0    NaN  ...   02/15/2023            PPO          Paid   Northside Hospital
-157    C1119      P1380  31.0    NaN  ...   04/25/2024            HMO          Paid         Health First
-159    C1047      P2598  22.0    NaN  ...   03/22/2024            PPO          Paid  Green Valley Clinic
-160    C1137      P4421  73.0      M  ...   07-09-2023       Medicare          Paid    Westside Hospital
-
-[15 rows x 13 columns]
-'''
-# 2. Remove Duplicates
-# this is better for healthcare where they can be duplicate information for everything other than the patient
-df.drop_duplicates(subset='Claim ID', inplace=True)
-print(df.shape)
-# Sample Output: (150, 13)
-
-# Step 4: Standardize Data Formats
-# 1. Date Format Standardization:

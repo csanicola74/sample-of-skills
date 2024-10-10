@@ -113,10 +113,7 @@ Sample Output:
 [15 rows x 13 columns]
 '''
 # 2. Remove Duplicates
-# this is better for healthcare where they can be duplicate information for everything other than the patient
 df.drop_duplicates(subset='Claim ID', inplace=True)
 print(df.shape)
-# Sample Output: (150, 13)
 
-# Step 4: Standardize Data Formats
-# 1. Date Format Standardization:
+# this is better for healthcare where they can be duplicate information for everything other than the patient
