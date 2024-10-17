@@ -133,12 +133,3 @@ df['Gender'] = df['Gender'].str.upper()
 # get the value counts of the Gender column to check if there are inconsistent formats
 print(df['Gender'].value_counts())
 # Sample Output:
-'''
-Gender
-M            33
-F            30
-NONBINARY    27
-'''
-
-# 3. Service and Diagnosis Codes:
-# - Ensure service and diagnosis codes are of the correct format (e.g., 5-character strings).

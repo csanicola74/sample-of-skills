@@ -124,21 +124,3 @@ print(df.shape)
 # - Use 'pd.to_datetime()' to handle this
 df['Claim Date'] = pd.to_datetime(
     df['Claim Date'], errors='coerce', format='%m/%d/%Y')
-df['Payment Date'] = pd.to_datetime(
-    df['Payment Date'], errors='coerce', format='%m/%d/%Y')
-
-# 2. Gender Consistency:
-# - Capitalize all gender values (M, F, etc.) to standardize them.
-df['Gender'] = df['Gender'].str.upper()
-# get the value counts of the Gender column to check if there are inconsistent formats
-print(df['Gender'].value_counts())
-# Sample Output:
-'''
-Gender
-M            33
-F            30
-NONBINARY    27
-'''
-
-# 3. Service and Diagnosis Codes:
-# - Ensure service and diagnosis codes are of the correct format (e.g., 5-character strings).
